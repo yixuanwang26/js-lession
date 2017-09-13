@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession1：控制div 变宽，变高，变色，隐藏，重置</title>
+    <style>
+    #div {
+        width:100px;
+        height:100px;
+        background-color:black;
+        margin:10px auto; 
+    }
+    #outer {
+        width:300px;
+        height: 300px;
+        margin:0px auto;
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <script>
+    //公用方法，用以给特定元素的特定属性设置特定值
+     function changeBtnAtrr(element,attr,value){
+       element.style[attr] = value;
+     }    
+
+     window.onload = function(){
+         var divElement = document.getElementById('div');
+         var btnElement = document.getElementsByTagName('button');
+         var attr = ['width','height','background-color','display','display'];
+         var value = ['200px','200px','red','none','block'];
+
+         for(var i = 0;i < btnElement.length;i++){
+             btnElement[i].index = i;
+             btnElement[i].onclick = function(){
+                 this.index === btnElement.length - 1 && (divElement.style.cssText = '');
+                 changeBtnAtrr(divElement,attr[this.index],value[this.index]);
+             }
+         }
+
+     }
+    </script>
+ <div id='outer'>
+    <div id='btn'>
+       <button>变宽</button>
+       <button>变高</button>
+       <button>变色</button>
+       <button>隐藏</button>
+       <button>重置</button>
+    </div>
+    <div id='div'></div>
+</div>
+</body>
+</html>
