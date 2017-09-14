@@ -1,3 +1,7 @@
 body {
     background-color: #fdd
 }
+
+#li > li {
+    background-color:red;
+}

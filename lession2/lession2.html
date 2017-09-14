@@ -16,7 +16,7 @@
         border: 1px solid white;
         float:left;
         padding:5px 15px;
-        background-color:red;
+        
     }
     #li {
         display: block;
@@ -54,8 +54,8 @@
         float:left;
     }
 
-    #select > li .current {
-        background: white;
+    #select li.current {
+        background: #fff !important;
     }
     ul {
         list-style-type:disc;
@@ -63,6 +63,22 @@
     </style>
 </head>
 <body>
+    <script>
+        window.onload = function(){
+            var selectLiElement = document.getElementById('select').getElementsByTagName('li');
+        var linkElement = document.getElementsByTagName('link')[0];
+  
+        for(var i = 0;i < selectLiElement.length;i++){
+            selectLiElement[i].onclick = function(){
+                for(key in selectLiElement) selectLiElement[key].className = '';
+                this.className = 'current';
+                linkElement['href'] = this.id+'.css';
+            }  
+        }
+        }
+       
+    
+    </script>
 <div id='outer'>
     <div><ul id='select'>
             <li id='red' class='current'></li>

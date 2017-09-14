@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession3:移入移出样式改变</title>
+    <style>
+        div {
+            width:200px;
+            height:200px;
+            margin:20px auto;
+            text-align: center;
+            background:black;
+        }
+
+        div.mouse {
+           background:red;
+           border: 10px solid blue; 
+        }
+        p {
+            height: 100%;
+            line-height:180px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var divEle = document.getElementsByTagName('div')[0];
+            divEle.onmouseover = function(){
+                divEle.className = 'mouse';
+            }
+
+            divEle.onmouseout = function(){
+                divEle.className = '';
+            }
+        }
+    </script>
+</head>
+<body>
+<div id='div1'><p>划过我样式改变😯😯</p></div>
+</body>
+</html>

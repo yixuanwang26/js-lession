@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession3:输入法</title>
+    <style>
+      #outer {
+          width:300px;
+          margin:10px auto;
+      }
+
+      #list {
+          width:90px;
+          border:1px solid #4D50F0;
+          margin-top:2px;
+          color:#4D50F0;
+      }
+
+      ul {
+        text-align: center;
+        list-style-type: none;
+        height: 100%;
+        width:100%;
+        margin:0px;
+        padding:0px;
+      }
+
+      li {
+          cursor: pointer;
+      }
+
+      li:hover {
+         background: rgb(190, 191, 241);
+      }
+
+      #en {
+          border-bottom:1px solid #4D50F0;
+      }
+
+
+    </style>
+    <script>
+        
+        window.onload = function(){
+
+            var nextState = 'block';
+
+            var changeDisplay = function(){
+                 var lastState = listElement.style['display'];
+                 listElement.style['display'] = nextState;
+                 nextState = lastState;
+            } 
+
+            var liElement = document.getElementsByTagName('li');
+            var listElement = document.getElementById('list');
+            var btnElement = document.getElementsByTagName('button')[0];
+
+            liElement[2].onclick = changeDisplay;
+
+            btnElement.onclick = changeDisplay;
+
+        }
+    
+    </script>
+</head>
+<body>
+<div id='outer'>
+<button>点我哦，会粗来惊喜~</button>
+<div id='list' style='display:none'>
+    <ul>
+        <li id='cn'>中文</li>
+        <li id='en'>英文</li>
+        <li id='close'>关闭</li>
+    </ul>
+</div>
+</div>
+</body>
+</html>
