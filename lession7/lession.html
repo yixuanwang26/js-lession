@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession7:简易tab</title>
+    <style>
+           body {
+            font-size:12px;
+           }
+           #outer {
+               width:500px;
+               margin:10px auto;
+               border:1px solid black;
+           }
+
+           #header {
+               background: black;
+           }
+
+           .head {
+               list-style-type: none;
+               border:1px solid black;
+               background: black;
+               color:aliceblue;
+               float:left;
+               padding:0px 15px;
+               border-left: 0px;
+               border-top: 0px;
+           }
+
+           .head:hover {
+               background:#ccc;
+               color:black;
+           }
+           #ul {
+               padding:0px;
+               margin:0px;
+               overflow: hidden;
+           }
+
+           li {
+               line-height: 30px;
+           }
+    </style>
+      
+    <script>
+      window.onload = function(){
+          var headElement = document.getElementsByClassName('head');
+          var tabElement = document.getElementsByClassName('tab');
+          for(var i = 0;i<headElement.length;i++){
+              headElement[i].index = i;
+              headElement[i].onmouseover = function(){
+                  for(v in tabElement){
+                      typeof tabElement[v].style !== 'undefined'&& (tabElement[v].style['display'] = 'none');
+                  }
+                  tabElement[this.index].style['display'] = 'block';
+
+              }
+          }
+      }
+    </script>
+</head>
+<body>
+    <div id='outer'>
+        <div id='header'>
+         <ul id='ul'>
+            <li class='head'>第一章</li>
+            <li class='head'>第二章</li>
+            <li class='head'>第三章</li>
+         </ul>
+        </div>
+        <div class='tab' style='display:block'>
+         <ul>
+             <li>明月几时有</li>
+             <li>把酒问青天</li>
+             <li>不知天上宫阙</li>
+             <li>今夕是何年</li>
+             <li>我欲乘风归去</li>
+             <li>又恐琼楼玉宇</li>
+             <li>高处不胜寒</li>
+         </ul>
+        </div>
+        <div class='tab' style="display:none">
+         <ul>
+            <li>啊啊啊啊</li>
+            <li>反反复复</li>
+            <li>反反复复付付</li>
+            <li>咕咕咕咕过过</li>
+            <li>呃呃鹅鹅鹅</li>
+            <li>吞吞吐吐拖</li>
+            <li>呜呜呜呜无</li>
+          </ul>
+        </div>
+        <div class='tab'style="display:none">
+        <ul>
+           <li>呜呜呜呜</li>
+            <li>咕咕咕咕过</li>
+            <li>呜呜呜呜</li>
+            <li>反反复复付</li>
+            <li>柔柔弱弱若</li>
+            <li>吞吞吐吐拖拖</li>
+            <li>一月又一月</li>
+        </ul>
+        </div>
+    </div>
+</body>
+</html>
