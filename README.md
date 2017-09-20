@@ -41,3 +41,11 @@
    * 父级增加样式，overflow:hidden
 
    * 在父级增加伪类after
+#### lession9
+1. 添加gif图片为加载动画
+
+  > background:#fff url(../asset/loading.gif) 50% 50% no-repeat;
+  
+  no-repeat去除了平铺效果，背景颜色添加#fff，设置透明度opacity:0.4;可以调出遮罩效果。
+  
+  50% 50% 固定位置到中心。
