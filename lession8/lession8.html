@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession8:提示框效果</title>
+    <style>
+    #outer {
+        width:820px;
+        margin:10px auto;
+        border:1px solid black;
+        text-align: center;
+        /* overflow: hidden; */
+        padding-bottom: 10px;
+        display: block;
+        clear:both;
+        
+    }
+    ul {
+            display: block;
+            margin:0px;
+            padding-left:10px;
+            padding-bottom: 10px;
+            zoom:1;
+            list-style-type: none;
+    }
+
+    ul:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    }
+
+    li {
+        list-style-type: none;
+        border:1px solid black;
+        float:left;
+        width:170px;
+        height:170px;
+        margin-right: 10px;
+        padding:10px;
+        position:relative;
+    }
+    a {
+
+       padding:10px;
+       font-size:15px;
+    }
+    img {
+        position:absolute;
+        left: -10px;
+        top:-10px;
+        border:1px solid black;
+        z-index: 1000;
+    }
+    </style>
+    <script>
+    window.onload = function(){
+       var liEle = document.getElementsByTagName('li');
+       var imgEle = document.getElementsByTagName('img');
+       for(var i = 0;i < liEle.length;i++){
+           liEle[i].index = i;
+           liEle[i].onmouseover = function(){
+              for(key in imgEle){
+                 typeof imgEle[key].style !== 'undefined' && (imgEle[key].style['display'] = 'none');
+              }
+            imgEle[this.index].style['display'] = 'block';  
+           }
+           liEle[i].onmouseout = function(){
+            for(key in imgEle){
+                 typeof imgEle[key].style !== 'undefined' && (imgEle[key].style['display'] = 'none');
+              }
+           }
+       }
+    }
+    </script>
+</head>
+<body>
+<div id='outer'>
+   <h3>校徽展示</h3>
+   <ul>
+       <li>
+           <a>清华大学</a>
+           <img src='../asset/33301853_3.jpg' style="display:none">
+       </li>
+       <li>
+            <a>复旦大学</a>
+            <img src='../asset/33301853_4.jpg' style="display:none">
+       </li>
+       <li>
+            <a>北京大学</a>
+            <img src='../asset/33301853_2.jpg' style="display:none">
+       </li>
+       <li>
+            <a>中山大学</a>
+            <img src='../asset/33301853_8.jpg' style="display:none">
+       </li>
+   </ul>
+</div>
+</body>
+</html>
+
+

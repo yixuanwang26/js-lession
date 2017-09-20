@@ -32,3 +32,12 @@
       }
 
     伪类和元素中间不能有空格。
+#### lession8
+1. 清除float漂浮的四种方法
+   * 对父级设置固定高度
+
+   * 在父级之内，浮动元素之外增加一个<div style="clear:both"></div>
+
+   * 父级增加样式，overflow:hidden
+
+   * 在父级增加伪类after
