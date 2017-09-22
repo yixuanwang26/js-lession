@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession10:简易计算器</title>
+     <style>
+     #outer {
+         width:300px;
+         margin:20px auto;
+         overflow: hidden;
+         background: url(../asset/lession10/bg.jpg);
+         position:relative;
+     }
+
+     input {
+         width:290px;
+         height:84px;
+         background: url(../asset/lession10/inputBg.jpg) repeat-x;
+         border:0px;
+         font:700 50px/80px Arial;
+         text-align: right;
+         padding:0px 5px;
+     }
+
+     ul,li {
+         list-style-type: none;
+     }
+     ul {
+         padding-left:8px;
+         padding-bottom: 17px;
+         overflow: hidden;
+         margin:0px;
+         position:relative;
+     }
+     li {
+         float: left;
+         width:63px;
+         height:41px;
+         margin-top:17px;
+         margin-right:10px;
+         text-align: center;
+         background: white;
+     }
+
+     a {
+         display: block;
+         width:63px;
+         height:41px;
+         outline: none;
+         text-decoration: none;
+         background: url(../asset/lession10/btn.png);
+         line-height: 41px;
+         text-align: center;
+         font:700 23px/41px Arial;
+         color:white;
+     }
+
+     a:hover {
+         background-position: -63px 0px;
+     }
+
+     .btn-1 a {
+         background-position: 0 -41px;
+     }
+     .btn-1 a:hover {
+         background-position: -63px -41px;
+     }
+
+     .btn-2 a {
+        height:99px;
+        background-position: 0 100px;
+        line-height: 99px;
+     }
+     .btn-2 a:hover {
+        background-position: -63px 100px;
+     }
+     .btn-3 a{
+         width:136px;
+         background-position: 0px -82px;
+     }
+     .btn-3 a:hover{
+         background-position: 0px -123px;
+     }
+
+     .btn-2 {
+         width:63px;
+         height:99px;
+         position: absolute;
+         right:0px;
+         top:174px;
+     }
+
+     .btn-3 {
+         width:136px;
+         height:41px;
+     }
+
+     #halfRes {
+         position:absolute;
+         top:3px;
+         left:0px;
+         height: 18px;
+         width: 270px;
+         padding-right: 20px;
+     }
+
+     </style>
+</head>
+<body>
+<div id='outer'>
+<input value='0' maxlength="9" readonly="readonly">
+<ul>
+    <li class='btn-1'><a href="javascript:void(0)">c</a></li>
+    <li class='btn-1'><a href="javascript:void(0)">%</a></li>
+    <li class='btn-1'><a href="javascript:void(0)">÷</a></li>
+    <li class='btn-1'><a href="javascript:void(0)">×</a></li>
+
+    <li><a href="javascript:void(0)">7</a></li>
+    <li><a href="javascript:void(0)">8</a></li>
+    <li><a href="javascript:void(0)">9</a></li>
+    <li class='btn-1'><a href="javascript:void(0)">-</a></li>
+
+    <li><a href="javascript:void(0)">4</a></li>
+    <li><a href="javascript:void(0)">5</a></li>
+    <li><a href="javascript:void(0)">6</a></li>
+    <li class='btn-1'><a href="javascript:void(0)">+</a></li>
+
+    <li><a href="javascript:void(0)">1</a></li>
+    <li><a href="javascript:void(0)">2</a></li>
+    <li><a href="javascript:void(0)">3</a></li>
+
+    <li class='btn-2'><a href="javascript:void(0)">=</a></li>
+
+    <li class='btn-3'><a href="javascript:void(0)">0</a></li>
+    <li><a href="javascript:void(0)">.</a></li>
+</ul>
+<input id='halfRes' readonly="readonly">
+</div>
+</body>
+</html>
+
+
