@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession12:切换效果</title>
+     <style>
+      body {
+             background: black;
+      }
+      #outer {
+          width:490px;
+          height: 170px;
+          margin:10px auto;
+          border:8px solid white;
+          border-radius:5px;
+          overflow: hidden;
+          position: relative;
+          background: #fff;
+      }
+      #img,#point{
+          padding:0px;
+          margin:0px;
+      }
+      #img li {
+          float:left;
+          position:absolute;
+          left: 0px;
+          top: 0px;
+          background: #fff;
+      }
+
+      
+
+
+      #img,#img li,#point,#point li{
+          list-style-type: none;
+      }
+
+      #point {
+          position:absolute;
+          right: 2px;
+          bottom:5px;
+      }
+
+      #point li {
+          float: left;
+          width: 19px;
+          height:19px;
+          border-radius: 15px;
+          background: #F90;
+          margin-left:6px;
+          text-align: center;
+          color:white;
+          font-size: 9px;
+          opacity: 0.6;
+          cursor: pointer;
+         
+      }
+      #point li.current-point {
+          background: #F60 !important;
+          opacity: 1 !important;
+          font-weight: 900;
+      }
+    
+    
+
+     </style>
+     <script>
+     window.onload = function(){
+        var index = 1;
+        var outer = document.getElementById('outer');
+        var imgLiEle = document.getElementById('img').getElementsByTagName('li');
+        var poLiEle = document.getElementById('point').getElementsByTagName('li');
+        var timer = null;
+
+        var changeFun = function(curIndex = index){
+            clearInterval(timer);
+            for(key in imgLiEle){
+                imgLiEle[key].style != null && imgLiEle[key].style['opacity'] != null && (imgLiEle[key].style['opacity'] =0);
+            }
+               
+            for(key in poLiEle) poLiEle[key].className = '';
+            var ins = 0;
+            timer = window.setInterval(function(){
+                 ins += 0.01;
+                 imgLiEle[curIndex].style['opacity'] =ins;
+                 if(ins > 1){
+                    clearInterval(timer);
+                 }
+            },20);
+    
+            poLiEle[curIndex].className = 'current-point';
+            index = (curIndex === 4)?0:curIndex+1;
+        }
+
+        outer.onmouseover = function(){
+               clearInterval(bre);
+            }
+
+        outer.onmouseout = function(){
+                bre = window.setInterval(changeFun,3000);
+            }
+
+        var bre = window.setInterval(changeFun,3000);
+
+        for(var i=0;i<poLiEle.length;i++){
+            poLiEle[i].index = i;
+            poLiEle[i].onclick = function(){
+                changeFun(this.index);
+            };
+        }
+
+     }
+     </script>
+</head>
+<body>
+<div id='outer'>
+    <ul id='img'>
+        <li style='opacity:1'><img src='../asset/lession12/01.jpg'></li>
+        <li style='opacity:0'><img src='../asset/lession12/02.jpg'></li>
+        <li style='opacity:0'><img src='../asset/lession12/03.jpg'></li>
+        <li style='opacity:0'><img src='../asset/lession12/04.jpg'></li>
+        <li style='opacity:0'><img src='../asset/lession12/05.jpg'></li>
+    </ul>
+    <ul id='point'>
+        <li class='current-point'>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+</body>
+</html>
+
+
