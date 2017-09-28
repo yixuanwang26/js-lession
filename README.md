@@ -76,6 +76,10 @@
         padding左右起作用，上下不起作用，对于有背景色和内边距的行内非替换元素，背景会延伸，但是行高不变
 
         margin左右起作用，上下不起作用。
+2. 使元素不能获取焦点:在其onfocus事件中调用blur事件
+> $().onfocus(function(){ this.blur(); })
+
+3. onclick鼠标点击事件，onfocus焦点事件，除了鼠标，键盘tab可以触发。
 
   
 

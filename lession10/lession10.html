@@ -105,6 +105,54 @@
      }
 
      </style>
+     <script>
+     window.onload = function(){
+        
+         var btnElm = document.getElementsByTagName('a');
+         var i1 = document.getElementsByTagName('input')[0];
+         var i2 = document.getElementById('halfRes');
+        
+        
+         //标记是否执行过一次计算
+         var flag = false;
+
+         for(var i=0;i<btnElm.length;i++){
+            btnElm[i].onclick = function(){
+             switch(this.innerHTML){
+                 case "c": //清除所有
+                 i1.value = 0;
+                 i2.value = '';
+                 flag = false;
+                 break;
+
+                 case "%": //如果i1为数字型时调用count函数
+                 /^[0-9]+$/.test(i1.value) && (count('%'));
+                 case "÷":
+                 /^[0-9]+$/.test(i1.value) && (count('/'));
+                 case "×":
+                 /^[0-9]+$/.test(i1.value) && (count('*'));
+                 case "-":
+                 /^[0-9]+$/.test(i1.value) && (count('-'));
+                 case "+":
+                 /^[0-9]+$/.test(i1.value) && (count('+'));
+                 case "=":
+                 flag || (i2.value = i2.value + i1.value);
+                 i1.value = eval(i2.value);
+                 i1.value = i1.value.substr(0,10).replace('NaN',0);
+                 flag = true;
+                 default:
+             }
+            }
+            btnElm[i].onfocus = function(){
+                this.blur();
+            }
+         }
+         
+
+         function count(opera){
+         }
+     }
+     </script>
 </head>
 <body>
 <div id='outer'>

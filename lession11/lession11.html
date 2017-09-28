@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lession10:简易时钟</title>
+     <style>
+      #outer {
+          width:500px;
+          height: 100px;
+          background: black;
+          margin:10px auto;
+          text-align: center;
+      }
+      input {
+          width:50px;
+          height: 25px;
+          margin:0px 10px;
+          text-align: center;
+          font-size: 20px;
+          border:2px solid #b4b4b4;
+      }
+      span {
+          color:white;
+          line-height: 100px
+      }
+     </style>
+     <script>
+     window.onload = function(){
+       var iEle = document.getElementsByTagName('input');
+       window.setInterval(function(){
+         var time = new Date();
+         iEle[0].value = time.getHours();
+         iEle[1].value = time.getMinutes();
+         iEle[2].value = time.getSeconds();
+       },1000)
+     }
+     </script>
+</head>
+<body>
+<div id='outer'>
+<input readonly>
+<span>点</span>
+<input readonly>
+<span>分</span>
+<input readonly>
+<span>秒</span>
+</div>
+</body>
+</html>
+
+
