@@ -75,12 +75,15 @@
 
         var changeFun = function(curIndex = index){
             clearInterval(timer);
+            //将所有图片透明度设为0
             for(key in imgLiEle){
                 imgLiEle[key].style != null && imgLiEle[key].style['opacity'] != null && (imgLiEle[key].style['opacity'] =0);
             }
-               
+            //将所有point设置为初始class   
             for(key in poLiEle) poLiEle[key].className = '';
+
             var ins = 0;
+            //设置当前图片的淡出效果
             timer = window.setInterval(function(){
                  ins += 0.01;
                  imgLiEle[curIndex].style['opacity'] =ins;
@@ -88,21 +91,25 @@
                     clearInterval(timer);
                  }
             },20);
-    
+            //设置当前point的class
             poLiEle[curIndex].className = 'current-point';
+            //根据当前索引设置下一自然索引
             index = (curIndex === 4)?0:curIndex+1;
         }
 
+        //设置为鼠标移入当前图片时，暂停切换
         outer.onmouseover = function(){
                clearInterval(bre);
             }
-
+        //设置为鼠标移出当前图片时，回复切换
         outer.onmouseout = function(){
                 bre = window.setInterval(changeFun,3000);
             }
 
+        //3秒切换一次
         var bre = window.setInterval(changeFun,3000);
 
+        //point绑定事件
         for(var i=0;i<poLiEle.length;i++){
             poLiEle[i].index = i;
             poLiEle[i].onclick = function(){
