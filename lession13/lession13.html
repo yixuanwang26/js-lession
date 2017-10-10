@@ -2,48 +2,148 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>lession13:评分系统</title>
+    <title>lession13:评分打星</title>
      <style>
-      #outer {
-          width:500px;
-          height: 100px;
-          background: black;
-          margin:10px auto;
-          text-align: center;
-      }
-      input {
-          width:50px;
-          height: 25px;
-          margin:0px 10px;
-          text-align: center;
-          font-size: 20px;
-          border:2px solid #b4b4b4;
-      }
-      span {
-          color:white;
-          line-height: 100px
-      }
+     #outer {
+         width:600px;
+         height: 100px;
+         margin:20px auto;
+         font-size:12px;
+         position:relative;
+         color:#666;
+     }
+     p {
+         margin:0px 10px;
+         line-height: 19px;
+     }
+     p,ul {
+         float:left;
+     }
+
+     ul {
+         margin:5px 0px;
+         padding:0px;
+         margin:0px auto;
+         width:120px;
+         overflow: hidden;
+     }
+
+     li {
+         float:left;
+         width:20px;
+         height:19px;
+         background: url(../asset/lession13/star.png) no-repeat;
+         margin-right:3px;
+         /* background-position: 0px 0px; */
+     }
+
+     ul,li {
+         list-style-type: none;
+     }
+
+     #detail {
+         width:179px;
+         height:67px;
+         background: url(../asset/lession13/icon.gif) no-repeat;
+         position:absolute;
+         top:22px;
+         text-align: left;
+         font-size:12px;
+     }
+
+     li.selected {
+        background-position: 0px -28px;
+     }
+
+     #score {
+         color:#f60;
+         margin-top:8px;
+         margin-left:10px;
+         margin-right: 10px;
+     }
+     strong {
+        color:#f60;
+     }
+
+     #comment {
+         margin:0px 10px;
+     }
+
      </style>
      <script>
      window.onload = function(){
-       var iEle = document.getElementsByTagName('input');
-       window.setInterval(function(){
-         var time = new Date();
-         iEle[0].value = time.getHours();
-         iEle[1].value = time.getMinutes();
-         iEle[2].value = time.getSeconds();
-       },1000)
+      var actualScore = 0;
+      var scoreBase = ['分 很不满意','分 不满意','分 一般','分 满意','分 非常满意'];
+      var commentBase = ["差得太离谱，与卖家描述的严重不符，非常不满",
+				"部分有破损，与卖家描述的不符，不满意",
+				"质量一般，没有卖家描述的那么好",
+				"质量不错，与卖家描述的基本一致，还是挺满意的",
+				"质量非常好，与卖家描述的完全一致，非常满意"];
+      var liEle = document.getElementsByTagName('li');
+      var detailEle = document.getElementById('detail');
+
+      var bEle = document.getElementsByTagName('b')[0];
+      var score = document.getElementById('score');
+      var comment = document.getElementById('comment');
+
+      var spanEle = document.getElementsByTagName('span')[0];
+      
+      for(var i = 0;i<liEle.length;i++){
+          liEle[i].index = i;
+          liEle[i].onmouseover = function(){
+              for(var k in liEle) liEle[k].className != null && (liEle[k].className = '');
+              for(var j = this.index;j > -1;j--){
+                  liEle[j].className = 'selected';
+              }
+              var move = this.index * 20;
+              detailEle.style['left'] = (24+move)+'px';
+              detailEle.style['display'] = 'block';
+              score.innerHTML = '<b style="margin-right:5px">'+(this.index+1)+'</b>'+scoreBase[this.index];
+              comment.innerText = commentBase[this.index];
+          }
+          liEle[i].onmouseout = function(){
+                for(var k in liEle) liEle[k].className != null && (liEle[k].className = '');
+                if(actualScore !== 0){
+                    for(var j = actualScore - 1;j > -1;j--){
+                    liEle[j].className = 'selected';
+                }
+                }
+            detailEle.style['display'] = 'none';
+            
+          }
+
+          liEle[i].onclick = function(){
+              actualScore = this.index + 1;
+            for(var k in liEle) liEle[k].className != null && (liEle[k].className = '');
+              for(var j = this.index;j > -1;j--){
+                  liEle[j].className = 'selected';
+              }
+              spanEle.innerHTML = '<strong>'+(this.index+1)+' 分</strong>（'+commentBase[this.index]+')'
+              spanEle.style['display'] = 'block';
+
+          }
+      }
      }
      </script>
 </head>
 <body>
 <div id='outer'>
-<input readonly>
-<span>点</span>
-<input readonly>
-<span>分</span>
-<input readonly>
-<span>秒</span>
+<p>点击星星就打分</p>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<span style="display:none"></span>
+<div id='detail' style="display:none">
+  <div id='score'>
+     <b>1</b>
+  </div>
+  <p id='comment'>
+  </p>
+</div>
 </div>
 </body>
 </html>
